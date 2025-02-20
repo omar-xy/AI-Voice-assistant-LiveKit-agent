@@ -24,7 +24,7 @@ def prewarm(proc: JobProcess):
 
 async def keep_alive(ctx):
     while True:
-        await asyncio.sleep(30)  # Ping every 30 seconds
+        await asyncio.sleep(30)
         logger.debug("Sending keep-alive ping")
         # await ctx.room.send_data({"type": "ping"})
 
@@ -33,9 +33,9 @@ async def entrypoint(ctx: JobContext):
     initial_ctx = llm.ChatContext().append(
         role="system",
         text=(
-"أنت مساعد صوتي تم إنشاؤه بواسطة LiveKit. واجهتك مع المستخدمين ستكون صوتية."
-            "استخدم ردودًا قصيرة وواضحة، وتجنب استخدام علامات ترقيم غير قابلة للنطق. "
-            "تم إنشاؤك كعرض توضيحي لإظهار قدرات إطار عمل وكلاء LiveKit."
+            "You are a voice assistant created by LiveKit. Your interface with users will be voice."
+            "Use short, clear responses, and avoid using unpronounceable punctuation."
+            "Created as a demo to demonstrate the capabilities of the LiveKit agent framework."
         ),
     )
 
@@ -49,22 +49,22 @@ async def entrypoint(ctx: JobContext):
         model="meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo-128K",
         api_key=os.getenv("TOGETHER_API_KEY")
     )
-    elevenlabs_api_key = os.getenv("ELEVENLABS_API_KEY")
+    # elevenlabs_api_key = os.getenv("ELEVENLABS_API_KEY")
         
-    if not elevenlabs_api_key:
-        logger.error("ELEVENLABS_API_KEY not found in environment variables")
-        raise ValueError("ELEVENLABS_API_KEY is required")
-    # switching from cartesia no longer workin ..
-    ttse = elevenlabs.TTS(
-        api_key=elevenlabs_api_key,
-        model_id="eleven_multilingual_v2",
-    )
+    # if not elevenlabs_api_key:
+    #     logger.error("ELEVENLABS_API_KEY not found in environment variables")
+    #     raise ValueError("ELEVENLABS_API_KEY is required")
+    # # switching from cartesia no longer workin ..
+    # ttse = elevenlabs.TTS(
+    #     api_key=elevenlabs_api_key,
+    #     model_id="eleven_multilingual_v2",
+    # )
     
     agent = VoicePipelineAgent(
         vad=ctx.proc.userdata["vad"],
         stt=deepgram.STT(),
         llm=tllm,
-        tts=ttse,
+        tts=cartesia.TTS(),# switching again to cartesia
         turn_detector=turn_detector.EOUModel(),
         min_endpointing_delay=1.0,
         max_endpointing_delay=3.0,
