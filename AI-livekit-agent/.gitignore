@@ -1,0 +1,53 @@
+# Environment variables
+**/.env
+**/venv/
+**/env/
+
+# IDE/Editor
+**/.idea/
+**/.vscode/
+**/*.sublime-project
+**/*.sublime-workspace
+
+# Node.js
+**/.next/
+**/node_modules/
+**/npm-debug.log
+**/package-lock.json
+**/yarn-debug.log
+**/yarn-error.log
+**/out/
+
+# Python
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/__pycache__/
+
+# Django
+**/*.log
+**/*.pot
+
+**/*.sqlite3
+**/db.sqlite3
+
+# Media
+**/UsersMedia/*/*
+
+!**/UsersMedia/*/bw/
+!**/UsersMedia/*/colored/
+
+!**/UsersMedia/*/.default*.png
+!**/UsersMedia/*/.default*.jpeg
+
+**/Backend/source/staticfiles
+
+**/migrations/*
+!**/migrations/__init__.py
+
+# OS generated files
+**/.DS_Store         # macOS
+**/Thumbs.db         # Windows
+**/Desktop.ini       # Windows
+**/*.swp             # vim swap files
+**/*~                # Backup files
