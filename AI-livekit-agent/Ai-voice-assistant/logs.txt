@@ -1,4 +1,3 @@
-}
 2025-02-20 11:50:45,963 - DEBUG livekit - rustls::anchors:150:rustls::anchors - add_parsable_certificates processed 140 valid and 0 invalid certs {"pid": 47778, "job_id": "AJ_36E5WWsKuT8d"}
 2025-02-20 11:50:45,964 - DEBUG livekit - tokio_tungstenite::tls::encryption::rustls:103:tokio_tungstenite::tls::encryption::rustls - Added 140/140 native root certificates (ignored 0) {"pid": 47778, "job_id": "AJ_36E5WWsKuT8d"}
 2025-02-20 11:50:45,964 - DEBUG livekit - rustls::client::hs:73:rustls::client::hs - No cached session for DnsName("ai-chat-assistant-h41thavp.livekit.cloud") {"pid": 47778, "job_id": "AJ_36E5WWsKuT8d"}
